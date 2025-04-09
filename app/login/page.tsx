@@ -1,8 +1,7 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { ArrowLeft } from "lucide-react"
@@ -14,6 +13,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 export default function LoginPage() {
   const router = useRouter()
   const [userType, setUserType] = useState("student")
+  const [currentYear, setCurrentYear] = useState<number | null>(null)
+
+  useEffect(() => {
+    // Set the current year on the client side
+    setCurrentYear(new Date().getFullYear())
+  }, [])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -108,10 +113,16 @@ export default function LoginPage() {
               <p className="text-purple-200 text-sm mb-2">Each user has their own personal account for secure access</p>
               <p className="text-purple-200">
                 Don't have an account?{" "}
-                <Link href="/register" className="text-[#ffd84d] hover:underline">
-                  Contact administrator
+                <Link href="/register" className="text-white hover:underline">
+                  Sign Up Here
                 </Link>
               </p>
+              <Button
+                asChild
+                className="mt-4 bg-[#ffd84d] text-[#3b1c6a] hover:bg-[#ffce1f] font-medium"
+              >
+                <Link href="/register">Sign Up</Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -119,10 +130,11 @@ export default function LoginPage() {
 
       <footer className="bg-[#3b1c6a] py-6 border-t border-[#5d3a96]">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-purple-200">&copy; {new Date().getFullYear()} School Leave. All rights reserved.</p>
+          {currentYear && (
+            <p className="text-purple-200">&copy; {currentYear} School Leave. All rights reserved.</p>
+          )}
         </div>
       </footer>
     </div>
   )
 }
-

@@ -134,7 +134,7 @@ export default function LoginTemplate() {
             <Checkbox
               id="terms"
               checked={rememberMe}
-              onCheckedChange={(checked) => setRememberMe(checked === true)}
+              onCheckedChange={(checked: boolean) => setRememberMe(checked)}
               className="border-gray-600 data-[state=checked]:bg-blue-600"
             />
             <label

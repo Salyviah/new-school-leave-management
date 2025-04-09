@@ -494,15 +494,12 @@ export default function TeacherDashboard() {
                               {leave.status === "pending" ? (
                                 <div className="flex gap-2">
                                   <Button
-                                    size="sm"
                                     className="bg-green-500 hover:bg-green-600 text-white"
                                     onClick={() => handleApprove(leave.id)}
                                   >
                                     Approve
                                   </Button>
                                   <Button
-                                    size="sm"
-                                    variant="outline"
                                     className="border-red-400 text-red-400 hover:bg-red-500/20"
                                     onClick={() => handleReject(leave.id)}
                                   >
@@ -511,9 +508,7 @@ export default function TeacherDashboard() {
                                 </div>
                               ) : (
                                 <Button
-                                  size="sm"
-                                  variant="outline"
-                                  className="border-[#5d3a96] text-white hover:bg-[#5d3a96]"
+                                  className="border-[#5d3a96] text-white hover:bg-[#5d3a96] outline-none"
                                   onClick={() => handleViewDetails(leave)}
                                 >
                                   View
